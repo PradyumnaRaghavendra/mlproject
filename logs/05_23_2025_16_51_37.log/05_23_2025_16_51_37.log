@@ -1,0 +1,13 @@
+[ 2025-05-23 16:51:43,016 ] 97 werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.0.38:5000
+[ 2025-05-23 16:51:43,016 ] 97 werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2025-05-23 16:51:43,147 ] 97 werkzeug - INFO - 127.0.0.1 - - [23/May/2025 16:51:43] "GET /predictdata HTTP/1.1" 200 -
+[ 2025-05-23 16:51:56,759 ] 97 werkzeug - INFO - 127.0.0.1 - - [23/May/2025 16:51:56] "POST /predictdata HTTP/1.1" 200 -
+[ 2025-05-23 16:52:05,649 ] 97 werkzeug - INFO - 127.0.0.1 - - [23/May/2025 16:52:05] "[33mPOST /ajax-api/2.0/mlflow/runs/search HTTP/1.1[0m" 404 -
+[ 2025-05-23 16:52:07,296 ] 97 werkzeug - INFO - 127.0.0.1 - - [23/May/2025 16:52:07] "GET /predictdata HTTP/1.1" 200 -
+[ 2025-05-23 16:52:36,651 ] 97 werkzeug - INFO - 127.0.0.1 - - [23/May/2025 16:52:36] "[33mPOST /ajax-api/2.0/mlflow/runs/search HTTP/1.1[0m" 404 -
+[ 2025-05-23 16:53:07,653 ] 97 werkzeug - INFO - 127.0.0.1 - - [23/May/2025 16:53:07] "[33mPOST /ajax-api/2.0/mlflow/runs/search HTTP/1.1[0m" 404 -
+[ 2025-05-23 16:53:13,719 ] 97 werkzeug - INFO - 127.0.0.1 - - [23/May/2025 16:53:13] "GET / HTTP/1.1" 200 -
+[ 2025-05-23 16:53:18,888 ] 97 werkzeug - INFO - 127.0.0.1 - - [23/May/2025 16:53:18] "GET /predictdata HTTP/1.1" 200 -

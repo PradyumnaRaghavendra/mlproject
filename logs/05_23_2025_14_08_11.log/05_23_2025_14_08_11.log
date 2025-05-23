@@ -1,0 +1,61 @@
+[ 2025-05-23 14:08:16,919 ] 97 werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.0.38:5000
+[ 2025-05-23 14:08:16,919 ] 97 werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2025-05-23 14:08:20,033 ] 97 werkzeug - INFO - 127.0.0.1 - - [23/May/2025 14:08:20] "GET /predictdata HTTP/1.1" 200 -
+[ 2025-05-23 14:08:36,055 ] 875 app - ERROR - Exception on /predictdata [POST]
+Traceback (most recent call last):
+  File "/Users/pradyumna/Downloads/mlproject/src/pipeline/predict_pipeline.py", line 20, in predict
+    data_scaled=preprocessor.transform(features)
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/sklearn/utils/_set_output.py", line 319, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/sklearn/compose/_column_transformer.py", line 1101, in transform
+    Xs = self._call_func_on_transformers(
+        X,
+    ...<3 lines>...
+        routed_params=routed_params,
+    )
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/sklearn/compose/_column_transformer.py", line 910, in _call_func_on_transformers
+    return Parallel(n_jobs=self.n_jobs)(jobs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/sklearn/utils/parallel.py", line 77, in __call__
+    return super().__call__(iterable_with_config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/joblib/parallel.py", line 1986, in __call__
+    return output if self.return_generator else list(output)
+                                                ~~~~^^^^^^^^
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/joblib/parallel.py", line 1914, in _get_sequential_output
+    res = func(*args, **kwargs)
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/sklearn/utils/parallel.py", line 139, in __call__
+    return self.function(*args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/sklearn/pipeline.py", line 1531, in _transform_one
+    res = transformer.transform(X, **params.transform)
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/sklearn/pipeline.py", line 1092, in transform
+    Xt = transform.transform(Xt, **routed_params[name].transform)
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/sklearn/utils/_set_output.py", line 319, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/sklearn/preprocessing/_encoders.py", line 1052, in transform
+    if self._drop_idx_after_grouping is not None:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OneHotEncoder' object has no attribute '_drop_idx_after_grouping'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/pradyumna/Desktop/Data Science/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/pradyumna/Downloads/mlproject/app.py", line 40, in predict_datapoint
+    results=predict_pipeline.predict(pred_df)
+  File "/Users/pradyumna/Downloads/mlproject/src/pipeline/predict_pipeline.py", line 25, in predict
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [/Users/pradyumna/Downloads/mlproject/src/pipeline/predict_pipeline.py] line number [20] error message['OneHotEncoder' object has no attribute '_drop_idx_after_grouping']
+[ 2025-05-23 14:08:36,060 ] 97 werkzeug - INFO - 127.0.0.1 - - [23/May/2025 14:08:36] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -
